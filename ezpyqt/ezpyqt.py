@@ -143,34 +143,30 @@ class RadioButton(QRadioButton):
 
 
 class MessageBox(QMessageBox):
-    def __init__(self, err_type: str, message: str):
+    def __init__(self):
         super().__init__()
-        self.err_type = err_type
-        self.message = message
 
-        if self.err_type == mbc.info:
-            QMessageBox.information(
-                self,
-                "Merged!",
-                self.message,
-                QMessageBox.Ok,
-            )
+    def info(self, message):
+        QMessageBox.information(
+            self,
+            "Info!",
+            message,
+            QMessageBox.Ok,
+        )
 
-        elif self.err_type == mbc.error:
-            QMessageBox.critical(
-                self,
-                "Error!",
-                self.message,
-                QMessageBox.Ok,
-            )
+    def error(self, message):
+        QMessageBox.critical(
+            self,
+            "Error!",
+            message,
+            QMessageBox.Ok,
+        )
 
-        elif self.err_type == mbc.warning:
-            QMessageBox.warning(
-                self,
-                "Warning!",
-                self.message,
-                QMessageBox.Ok,
-            )
+    def warning(self, message):
+        QMessageBox.warning(
+            self,
+            "Warning!",
+            message,
+            QMessageBox.Ok,
+        )
 
-        else:
-            raise Exception("Invalid choice of err_type arg!")
