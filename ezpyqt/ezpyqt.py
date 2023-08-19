@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from typing import List
-from ezpyqt.constants import MessageBoxConstants as mbc
 
 from PySide6.QtWidgets import (
     QApplication,
