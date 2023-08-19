@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-__version__ = "1.0"
+__version__ = "1.0.1"
 
 setup(
     name="ezpyqt",
@@ -8,13 +8,9 @@ setup(
     description="To make the use of PyQt easier, Hence the name ezpyqt!",
     author="Saeid Alizadeh",
     author_email="saeidalz96@gmail.com",
-    url="",
+    url="https://github.com/saeidalz13/ezpyqt",
     packages=find_packages(),
     install_requires=[
         "PySide6",
     ],
-    classifiers=[
-        "Programming Language :: Python :: 3.10",
-        "Operating Systems :: OS Independent"
-    ]
 )

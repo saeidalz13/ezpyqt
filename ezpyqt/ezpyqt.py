@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import List
+from ezpyqt.constants import MessageBoxConstants as mbc
 
 from PySide6.QtWidgets import (
     QApplication,
@@ -24,7 +25,7 @@ from PySide6.QtWidgets import (
 
 
 @dataclass
-class ButtonsCustomized(QPushButton):
+class Button(QPushButton):
     def __init__(
             self,
             title: str,
@@ -89,7 +90,7 @@ class ButtonsCustomized(QPushButton):
                 f"width={self.width}, _slot={self._slot}, _style={self._style})")
 
 
-class LineEditCustomized(QLineEdit):
+class LineEdit(QLineEdit):
     def __init__(self, place_holder: str = None, tool_tip: str = None):
         super().__init__()
         self.place_holder = place_holder
@@ -102,7 +103,7 @@ class LineEditCustomized(QLineEdit):
             self.setToolTip(self.tool_tip)
 
 
-class ComboBoxCustomized(QComboBox):
+class ComboBox(QComboBox):
     def __init__(
             self,
             items: List = None,
@@ -125,7 +126,7 @@ class ComboBoxCustomized(QComboBox):
             self.setFixedHeight(self.height)
 
 
-class RadioButtonCustomized(QRadioButton):
+class RadioButton(QRadioButton):
     def __init__(self, title: str, set_disabled: bool = False, _slot: object = None):
         super().__init__()
         self.title = title
@@ -139,3 +140,35 @@ class RadioButtonCustomized(QRadioButton):
 
         if self._slot is not None:
             self.toggled.connect(self._slot)
+
+
+class MessageBox(QMessageBox):
+    def __init__(self, err_type: str, message: str):
+        super().__init__()
+
+        if err_type == mbc.info:
+            QMessageBox.information(
+                self,
+                "Merged!",
+                message,
+                QMessageBox.Ok,
+            )
+
+        elif err_type == mbc.error:
+            QMessageBox.critical(
+                self,
+                "Error!",
+                message,
+                QMessageBox.Ok,
+            )
+
+        elif err_type == mbc.warning:
+            QMessageBox.warning(
+                self,
+                "Warning!",
+                message,
+                QMessageBox.Ok,
+            )
+
+        else:
+            raise Exception("Invalid choice of err_type arg!")
